@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生日祝福🎉</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffe66d);
+            background-size: 600% 600%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: bounce 2s infinite;
+        }
+
+        .photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 20px auto;
+            animation: rotate 8s linear infinite;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎂 生日快乐！ 🎉</h1>
+        <img src="C:\Users\86188\Desktop\微信图片_20250325002343.jpg" class="photo" alt="生日照片">
+        <div class="message">
+            🎉 祝你生日快乐！<br>
+            🎁 愿每一天都充满欢笑！<br>
+            🌟 心想事成，万事如意！
+        </div>
+    </div>
+
+    <audio id="music" loop>
+        <source src="https://example.com/happy-birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // 自动播放音乐（微信可能需要点击触发）
+        document.addEventListener('click', function () {
+            const music = document.getElementById('music');
+            music.play();
+        }, { once: true });
+
+        // 彩纸特效
+        function shootConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            setTimeout(shootConfetti, 1500);
+        }
+        shootConfetti();
+
+        // 动态背景色
+        const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d'];
+        let current = 0;
+        setInterval(() => {
+            document.body.style.background = colors[current];
+            current = (current + 1) % colors.length;
+        }, 3000);
+    </script>
+</body>
+
+</html>
